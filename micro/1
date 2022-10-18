@@ -1,0 +1,8 @@
+python -m grpc_tools.protoc -I ../protobufs --python_out=. --grpc_python_out=. ../protobufs/recommendations.proto
+
+request = RecommendationRequest(user_id=1, category=BookCategory.SCIENCE_FICTION, max_results=3)
+request = RecommendationRequest(user_id=1, category=BookCategory.SCIENCE_FICTION, max_results=3)
+
+request = RecommendationRequest(user_id=1, category=BookCategory.SCIENCE_FICTION, max_results=3)
+
+python -m grpc_tools.protoc -I ../protobufs --python_out=. --grpc_python_out=. ../protobufs/recommendations.proto

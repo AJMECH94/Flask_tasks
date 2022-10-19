@@ -4,17 +4,17 @@ services:
   flask:
     build: .
     container_name: flask-app
-    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/usr/src/app
     ports:
-      - "8000:8000"
+      - "5000:5000"
     environment:
       - DEBUG=1
-      - Flask_ALLOWED_HOST=localhost
+      - FLASK_ALLOWED_HOST=localhost
       - CELERY_BROKER=redis://redis:6379
       - CELERY_BACKENDS=redis://redis:6379
       - REDIS_HOST=redis
+      - MONGO_HOST=mongodb_container
     depends_on:
       - mongodb_container
       - redis
@@ -27,19 +27,17 @@ services:
       - flask
       - redis
   mongodb_container:
-    image: mongo:latest
+    image: mongo
+    restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: ''
-    ports:
-      - 27017:27017
+      MONGO_INITDB_ROOT_USERNAME: 'ajinkya'
+      MONGO_INITDB_ROOT_PASSWORD: '12345'
     volumes:
-      - mongodb_data_container:/data/db
+      - log:/data/db
   redis:
     image: "redis"
-    ports:
-      - "6379:6379"
+
 volumes:
-  mongodb_data_container:
+  log:
 
 

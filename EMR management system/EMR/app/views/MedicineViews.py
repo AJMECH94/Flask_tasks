@@ -2,7 +2,7 @@
 from flask import request, json, Response, Blueprint
 from ..models.MedicineModel import MedicineModel, MedicineSchema
 from ..models.MasterMedicineModel import MasterMedicineModel
-from ..shared.auth import Auth
+from ..auth.auth import Auth
 from marshmallow import ValidationError
 
 medicine_api = Blueprint("medicine_api", __name__)

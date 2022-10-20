@@ -1,7 +1,7 @@
 # Imports
 from flask import json, Response, Blueprint, request
 from ..models.DiagnosticsModel import DiagnosticsModel, DiagnosticsSchema
-from ..shared.auth import Auth
+from ..auth.auth import Auth
 from marshmallow import ValidationError
 
 diagnostics_api = Blueprint('diagnostics_api', __name__)

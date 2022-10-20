@@ -2,7 +2,7 @@
 from ..models.MasterDiagnosticsModel import MasterDiagnosticsModel, MasterDiagnosticsSchema
 from  flask import Response, json, Blueprint, request
 from marshmallow import ValidationError
-from ..shared.auth import Auth
+from ..auth.auth import Auth
 
 master_diagnostics_api = Blueprint('master_diagnostics_api', __name__)
 master_diagnostics_schema = MasterDiagnosticsSchema()

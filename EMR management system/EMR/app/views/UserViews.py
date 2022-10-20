@@ -1,6 +1,6 @@
 from flask import request, json, Response, Blueprint, g
 from ..models.UserModel import UserModel, UserSchema, UserLoginSchema
-from ..shared.auth import Auth
+from ..auth.auth import Auth
 from marshmallow import ValidationError
 
 user_api = Blueprint('user_api', __name__)

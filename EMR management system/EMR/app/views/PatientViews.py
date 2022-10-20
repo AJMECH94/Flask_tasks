@@ -1,7 +1,7 @@
 # Imports
 from flask import request, json, Response, Blueprint, g
 from ..models.PatientModel import PatientModel, PatientSchema
-from ..shared.auth import Auth
+from ..auth.auth import Auth
 from marshmallow import ValidationError
 
 patient_api = Blueprint('patient_api', __name__)

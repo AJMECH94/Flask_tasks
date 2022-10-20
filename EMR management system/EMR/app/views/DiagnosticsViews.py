@@ -9,6 +9,7 @@ diagnostics_schema = DiagnosticsSchema()
 
 # Endpoint for creation
 @diagnostics_api.route('/', methods=['POST'])
+@Auth.auth_required
 def create():
     req_data = request.get_json()
     try:
@@ -23,6 +24,7 @@ def create():
 
 # Endpoint for deletion
 @diagnostics_api.route('/<int:id>', methods=['DELETE'])
+@Auth.auth_required
 def delete(id):
     data = DiagnosticsModel.get_one_diagnostic(id)
     

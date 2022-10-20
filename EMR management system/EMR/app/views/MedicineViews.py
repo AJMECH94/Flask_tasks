@@ -11,6 +11,7 @@ medicine_schema = MedicineSchema()
 
 # Endpoint for creation
 @medicine_api.route('/', methods=['POST'])
+@Auth.auth_required
 def create():
 
     req_data = request.get_json()
@@ -30,6 +31,7 @@ def create():
 
 # Endpoint for deletion 
 @medicine_api.route('/<int:id>', methods=['DELETE'])
+@Auth.auth_required
 def delete(id):
     data = MedicineModel.get_one_medicine(id)
     

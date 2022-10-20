@@ -9,6 +9,7 @@ patient_schema = PatientSchema()
 
 
 @patient_api.route('/', methods=['POST'])
+@Auth.auth_required
 def create():
     req_data = request.get_json()
     try:
@@ -29,6 +30,7 @@ def create():
 
 # Endpoint for deletion
 @patient_api.route('/<int:patient_id>', methods=['DELETE'])
+@Auth.auth_required
 def delete(patient_id):
     patient = PatientModel.get_one_patient(patient_id)
     if not patient:
@@ -45,6 +47,7 @@ def get_all():
 
 # Endpoint for individual retrival
 @patient_api.route('/<int:patient_id>', methods=['GET'])
+@Auth.auth_required
 def get_one(patient_id):
     patient = PatientModel.get_one_patient(patient_id)
     if not patient:
@@ -55,6 +58,7 @@ def get_one(patient_id):
 
 # Endpoint for updating
 @patient_api.route('/<int:patient_id>', methods=['PUT'])
+@Auth.auth_required
 def update(patient_id):
     req_data = request.get_json()
     patient = PatientModel.get_one_patient(patient_id)

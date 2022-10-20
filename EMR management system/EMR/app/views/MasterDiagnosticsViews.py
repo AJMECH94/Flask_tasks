@@ -9,6 +9,7 @@ master_diagnostics_schema = MasterDiagnosticsSchema()
 
 # Endpoint for creation
 @master_diagnostics_api.route('/', methods=['POST'])
+@Auth.auth_required
 def create():
     req_data = request.get_json()
     try:
@@ -22,6 +23,7 @@ def create():
 
 # Endpoint for retrival 
 @master_diagnostics_api.route('/', methods=['GET'])
+@Auth.auth_required
 def get_diagnostics():
     data = MasterDiagnosticsModel.get_all_diagnostics_available()
     res_data = master_diagnostics_schema.dump(data, many=True)
@@ -29,6 +31,7 @@ def get_diagnostics():
 
 # Endpoint for deletion
 @master_diagnostics_api.route('/<int:id>', methods=['DELETE'])
+@Auth.auth_required
 def delete(id):
     data = MasterDiagnosticsModel.get_one_diagnostics(id)
     

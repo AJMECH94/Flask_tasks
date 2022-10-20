@@ -30,6 +30,18 @@ def create():
     return custom_response({'token': token, 'user': ser_data}, 201)
 
 
+# Endpoint for retrival
+@user_api.route('/me', methods=['GET'])
+@Auth.auth_required
+def get_me():
+    """
+    Get me
+    """
+    user = UserModel.get_one_user(g.user.get('id'))
+    ser_user = user_schema.dump(user)
+    return custom_response(ser_user, 200)
+
+
 @user_api.route('/login', methods=['POST'])
 def login():
     """

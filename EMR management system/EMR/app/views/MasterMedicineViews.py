@@ -9,6 +9,7 @@ master_medicine_schema = MasterMedicineSchema()
 
 # Endpoint for creation
 @master_medicine_api.route('/', methods=['POST'])
+@Auth.auth_required
 def create():
     req_data = request.get_json()
     try:
@@ -22,6 +23,7 @@ def create():
 
 # Endpoint for retrival
 @master_medicine_api.route('/', methods=['GET'])
+@Auth.auth_required
 def get_medicine():
     data = MasterMedicineModel.get_all_medicines_available()
     res_data = master_medicine_schema.dump(data, many=True)
@@ -29,6 +31,7 @@ def get_medicine():
 
 # Endpoint for deletion 
 @master_medicine_api.route('/<int:id>', methods=['DELETE'])
+@Auth.auth_required
 def delete(id):
     data = MasterMedicineModel.get_one_medicine(id)
     

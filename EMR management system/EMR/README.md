@@ -1,20 +1,13 @@
 
-# Hospital-Management-System
+# EMR-Management-System
 
-A hospital management system made with flask and react
+A EMR management system made with flask
 
 Tech stack:
 
  1. Flask
- 2. React
- 3. SQLite
+ 2. SQLite
 
-Steps to execute:
-
- 1. `pip install pipenv`
- 2. `pipenv install`
- 3. `pipenv shell`
- 4. `python manage.py runserver`
  
  
 API guide:
